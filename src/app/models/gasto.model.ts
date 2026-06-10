@@ -2,7 +2,7 @@ import { IndicadorTipoGastoEnum } from "./gasto.tipo.enum";
 
 export class GastosModel {
     id: number;
-    dataGasto: Date;
+    dataGasto: string;
     tipoGasto: IndicadorTipoGastoEnum;
     valor: number;
     icone: string;

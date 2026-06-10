@@ -16,6 +16,7 @@ import { PatrimonioService } from "../../../services/patrimonio.service";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { DashboardModel } from "../../../models/main.data.model";
 import { DashboardService } from "../../../services/dashboard.service";
+import { DateUtils } from "../../../helpers/data.utils";
 
 @Component({
     selector: 'app-main-view-component',
@@ -59,21 +60,21 @@ export class AppMainViewComponent {
 
     buscarDados(): void {
 
-        defer(() => this.dashboardService.getDashboard(this.range[0], this.range[1])).pipe(
+        defer(() => this.dashboardService.getDashboard(DateUtils.toDateOnly(this.range[0]), DateUtils.toDateOnly(this.range[1]))).pipe(
 
             concatMap(mainData => {
                 this.mainData = mainData;
-                return defer(() => this.settingsService.getSettingsByDate(this.range[0], this.range[1]));
+                return defer(() => this.settingsService.getSettingsByDate(DateUtils.toDateOnly(this.range[0]), DateUtils.toDateOnly(this.range[1])));
             }),
 
             concatMap(settings => {
                 this.settings = settings;
-                return defer(() => this.mesService.getMesByDate(this.range[0], this.range[1]));
+                return defer(() => this.mesService.getMesByDate(DateUtils.toDateOnly(this.range[0]), DateUtils.toDateOnly(this.range[1])));
             }),
 
             concatMap(mes => {
                 this.mes = mes;
-                return defer(() => this.patrimonioService.getPatrimonioByDate(this.range[0], this.range[1]));
+                return defer(() => this.patrimonioService.getPatrimonioByDate(DateUtils.toDateOnly(this.range[0]), DateUtils.toDateOnly(this.range[1])));
             })
 
         ).subscribe({

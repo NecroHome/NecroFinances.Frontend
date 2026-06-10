@@ -15,12 +15,16 @@ import { IconesDescricao, IconesEnum } from "../../../../models/icones.enum";
     styleUrls: ['./dialog.novo.gasto.component.scss'],
     standalone: true,
     imports: [
-        CommonModule, FormsModule, ReactiveFormsModule,
-        DialogModule, DatePickerModule, ButtonModule, InputNumberModule
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DialogModule,
+        DatePickerModule,
+        ButtonModule,
+        InputNumberModule
     ]
 })
 export class DialogNovoGastoComponent implements OnInit {
-
     display: boolean = false;
     titulo: string = 'Novo Gasto';
     modoEditar: boolean = false;
@@ -38,7 +42,8 @@ export class DialogNovoGastoComponent implements OnInit {
 
     @ViewChild('valorInput') valorInput: any;
 
-    constructor(private fb: FormBuilder) { }
+    constructor(private fb: FormBuilder) {
+    }
 
     ngOnInit(): void {
         this.formGasto = this.fb.group({
@@ -55,6 +60,7 @@ export class DialogNovoGastoComponent implements OnInit {
 
     abrirParaAdicionar(): void {
         this.titulo = 'Novo Gasto';
+
         this.formGasto.reset({
             dataGasto: new Date(),
             valor: 0,
@@ -63,15 +69,20 @@ export class DialogNovoGastoComponent implements OnInit {
             totalParcelas: 0,
             tipoGasto: this.IndicadorTipoGasto.AVULSO
         });
+
         this.modoEditar = false;
         this.display = true;
     }
 
     abrirParaEditar(gasto: GastosModel): void {
         this.titulo = 'Editar Gasto';
-        this.formGasto.patchValue(gasto);
-        this.formGasto.patchValue({ dataGasto: new Date(gasto.dataGasto) });
-        this.formGasto.patchValue({ icone: this.determinarIcone(gasto.icone) });
+
+        this.formGasto.patchValue({
+            ...gasto,
+            dataGasto: this.dateOnlyToDate(gasto.dataGasto),
+            icone: this.determinarIcone(gasto.icone)
+        });
+
         this.modoEditar = true;
         this.gasto = gasto;
         this.display = true;
@@ -79,12 +90,13 @@ export class DialogNovoGastoComponent implements OnInit {
 
     selecionarTipo(tipo: IndicadorTipoGastoEnum): void {
         this.formGasto.patchValue({ tipoGasto: tipo });
+
         if (tipo !== IndicadorTipoGastoEnum.PARCELADO) {
             this.formGasto.patchValue({ parcela: 0 });
         }
     }
 
-    selecionarValor() {
+    selecionarValor(): void {
         const inputEl = this.valorInput.input.nativeElement;
         inputEl.select();
     }
@@ -94,21 +106,40 @@ export class DialogNovoGastoComponent implements OnInit {
     }
 
     adicionar(): void {
-        if (this.formGasto.invalid) return;
+        if (this.formGasto.invalid) {
+            return;
+        }
+
+        const formValue = this.formGasto.value;
 
         const gasto: GastosModel = {
             ...this.gasto,
-            ...this.formGasto.value
+            ...formValue,
+            dataGasto: this.dateToDateOnly(formValue.dataGasto)
         };
-        
+
         this.onNovoGasto.emit(gasto);
 
         this.display = false;
     }
 
-    determinarIcone(icone: string): IconesEnum | undefined{
+    determinarIcone(icone: string): IconesEnum | undefined {
         return Object.values(IconesEnum).includes(icone as IconesEnum)
-        ? icone as IconesEnum
-        : undefined;
+            ? icone as IconesEnum
+            : undefined;
+    }
+
+    private dateOnlyToDate(dateOnly: string): Date {
+        const [year, month, day] = dateOnly.split('-').map(Number);
+
+        return new Date(year, month - 1, day);
+    }
+
+    private dateToDateOnly(date: Date): string {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+
+        return `${year}-${month}-${day}`;
     }
 }

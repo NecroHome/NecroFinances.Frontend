@@ -13,7 +13,7 @@ export class DashboardService {
 
     }
 
-    getDashboard(inicio: Date, fim: Date): Observable<DashboardModel> {
-        return this.http.get<DashboardModel>(`${environment.dashboardContext}GetDashboard?inicio=${inicio.toISOString()}&fim=${fim.toISOString()}`);
+    getDashboard(inicio: string, fim: string): Observable<DashboardModel> {
+        return this.http.get<DashboardModel>(`${environment.dashboardContext}GetDashboard?inicio=${inicio}&fim=${fim}`);
     }
 }

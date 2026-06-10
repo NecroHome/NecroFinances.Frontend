@@ -13,8 +13,8 @@ export class SettingsService {
 
     }
 
-    getSettingsByDate(inicio: Date, fim: Date): Observable<SettingsModel> {
-        return this.http.get<SettingsModel>(`${environment.settingsContext}GetSettingsByDate?inicio=${inicio.toISOString()}&fim=${fim.toISOString()}`);
+    getSettingsByDate(inicio: string, fim: string): Observable<SettingsModel> {
+        return this.http.get<SettingsModel>(`${environment.settingsContext}GetSettingsByDate?inicio=${inicio}&fim=${fim}`);
     }
 
     updateSettings(model: SettingsModel): Observable<SettingsModel> {

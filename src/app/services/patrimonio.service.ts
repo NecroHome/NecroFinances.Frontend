@@ -13,8 +13,8 @@ export class PatrimonioService {
 
     }
 
-    getPatrimonioByDate(inicio: Date, fim: Date): Observable<PatrimonioModel> {
-        return this.http.get<PatrimonioModel>(`${environment.patrimonioContext}getPatrimonioByDate?inicio=${inicio.toISOString()}&fim=${fim.toISOString()}`);
+    getPatrimonioByDate(inicio: string, fim: string): Observable<PatrimonioModel> {
+        return this.http.get<PatrimonioModel>(`${environment.patrimonioContext}getPatrimonioByDate?inicio=${inicio}&fim=${fim}`);
     }
 
     updatePatrimonio(patrimonio: PatrimonioModel): Observable<PatrimonioModel> {

@@ -13,8 +13,8 @@ export class MesService {
 
     }
 
-    getMesByDate(inicio: Date, fim: Date): Observable<MesModel> {
-        return this.http.get<MesModel>(`${environment.monthContext}GetMesByDate?inicio=${inicio.toISOString()}&fim=${fim.toISOString()}`);
+    getMesByDate(inicio: string, fim: string): Observable<MesModel> {
+        return this.http.get<MesModel>(`${environment.monthContext}GetMesByDate?inicio=${inicio}&fim=${fim}`);
     }
 
     updateMes(mes: MesModel): Observable<MesModel> {
