@@ -1,8 +1,8 @@
 import { HttpInterceptorFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
 import { Router } from "@angular/router";
-import { LoginService } from "../../services/login.service";
 import { BehaviorSubject, switchMap, catchError, filter, take, throwError } from "rxjs";
+import { LoginService } from "../../services/login.service";
 
 let isRefreshing = false;
 const refreshTokenSubject = new BehaviorSubject<string | null>(null);
@@ -33,6 +33,13 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
     if (!isTokenExpired(token)) {
         return next(addToken(req, token));
     }
+
+    if (!refreshToken) {
+        localStorage.clear();
+        router.navigate(['/login']);
+
+        return throwError(() => new Error('Refresh token not found'));
+    }
     
     if (isRefreshing) {
         return refreshTokenSubject.pipe(
@@ -45,7 +52,7 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
     isRefreshing = true;
     refreshTokenSubject.next(null);
 
-    return loginService.refresh({ accessToken: '', refreshToken: refreshToken || '' }).pipe(
+    return loginService.refresh({ accessToken: token, refreshToken }).pipe(
         switchMap((response: any) => {
             isRefreshing = false;
 
