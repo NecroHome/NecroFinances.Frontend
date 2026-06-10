@@ -10,9 +10,6 @@
                     <div class="col-3 texto-descricao-barra">
                         <i class="icone-categoria" [class]="item.icone"></i>{{ item.descricao }}
                     </div>
-                    <div class="col texto-data-barra">
-                        {{ item.dataGasto | date:'dd/MM/yyyy'}}
-                    </div>
                     <div class="col texto-valor-barra">
                         {{ item.valor| currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
                     </div>

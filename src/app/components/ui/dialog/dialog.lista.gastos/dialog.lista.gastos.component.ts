@@ -37,7 +37,7 @@ export class DialogListaGastoComponent {
     open(total: number, gastos: GastosModel[]): void {
         this.header = `${this.datePipe.transform(gastos[0].dataGasto, 'dd/MM/yyyy')} | ${this.currencyPipe.transform(total, 'BRL', 'symbol', '1.2-2', 'pt-BR' )}`;
         this.total = total;
-        this.gastos = gastos;
+        this.gastos = gastos.sort((a, b) => b.valor - a.valor);
         this.visible = true;
     }
 
