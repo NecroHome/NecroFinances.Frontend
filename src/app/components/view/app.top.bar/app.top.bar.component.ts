@@ -15,6 +15,7 @@ import { DashboardModel } from "../../../models/main.data.model";
 import { GastoConsolidadoModel } from "../../../models/gasto.consolidado.model";
 import { DialogGastosDiariosComponent } from "../../ui/dialog/dialog.gastos.diarios/dialog.gastos.diarios.component";
 import { DiaGastoModel } from "../../../models/dia.gasto.model";
+import { DateUtils } from "../../../helpers/data.utils";
 
 @Component({
     selector: 'app-top-bar-component',
@@ -125,7 +126,7 @@ export class AppTopBarComponent implements OnInit, OnChanges {
 
         listaParcelados.forEach((item: GastoConsolidadoModel) => {
             item.origem?.forEach((gasto: GastosModel) => {
-                const data: Date = new Date(gasto.dataGasto);
+                const data: Date = DateUtils.parseLocalDate(gasto.dataGasto);
 
                 if (this.isSameDay(data, hoje)) {
                     gastoHoje += gasto.valor;
@@ -139,7 +140,7 @@ export class AppTopBarComponent implements OnInit, OnChanges {
 
         listaAvulsos.forEach((item: GastoConsolidadoModel) => {
             item.origem?.forEach((gasto: GastosModel) => {
-                const data: Date = new Date(gasto.dataGasto);
+                const data: Date = DateUtils.parseLocalDate(gasto.dataGasto);
 
                 if (this.isSameDay(data, hoje)) {
                     gastoHoje += gasto.valor;
@@ -231,7 +232,7 @@ export class AppTopBarComponent implements OnInit, OnChanges {
         let resultado: DiaGastoModel[] = [];
 
         listaAvulsos.forEach(avulso => { avulso.origem.forEach(gasto => {
-            let dataGasto: Date = new Date(gasto.dataGasto);
+            let dataGasto: Date = DateUtils.parseLocalDate(gasto.dataGasto);
             const diaGasto: DiaGastoModel | undefined = resultado.find(f => this.isSameDay(new Date(f.data), dataGasto));
             if (diaGasto == undefined) {
                 resultado.push({ data: dataGasto, total: gasto.valor, percentagem: 0, diferenca: undefined, gastos: [gasto] });
@@ -242,7 +243,7 @@ export class AppTopBarComponent implements OnInit, OnChanges {
         })});
 
         listaParcelados.forEach(parcelado => { parcelado.origem.forEach(gasto => {
-            let dataGasto: Date = new Date(gasto.dataGasto);
+            let dataGasto: Date = DateUtils.parseLocalDate(gasto.dataGasto);
             const diaGasto: DiaGastoModel | undefined = resultado.find(f => this.isSameDay(new Date(f.data), dataGasto));
             if (diaGasto == undefined) {
                 resultado.push({ data: dataGasto, total: gasto.valor, percentagem: 0, diferenca: undefined, gastos: [gasto] });
