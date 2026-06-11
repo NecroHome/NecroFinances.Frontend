@@ -42,6 +42,14 @@
                     </div>
 
                     <div class="field-card">
+                        <i class="pi pi-percentage"></i>
+                        <div class="field-info">
+                            <label>Taxa IRPF (% | ex: 0,1 = 10%)</label>
+                            <p-inputNumber formControlName="percentagemTaxaIRPF" mode="decimal" [min]="0" [maxFractionDigits]="2"></p-inputNumber>
+                        </div>
+                    </div>
+
+                    <div class="field-card">
                         <i class="pi pi-building"></i>
                         <div class="field-info">
                             <label>Taxa Cooperativa (% | ex: 0,012 = 1,2%)</label>
@@ -62,6 +70,14 @@
                         <div class="field-info">
                             <label>Plano Saúde (R$)</label>
                             <p-inputNumber formControlName="valorPlanoSaude" mode="currency" currency="BRL" locale="pt-BR" [min]="0"></p-inputNumber>
+                        </div>
+                    </div>
+
+                    <div class="field-card">
+                        <i class="pi pi-asterisk"></i>
+                        <div class="field-info">
+                            <label>Outros (R$)</label>
+                            <p-inputNumber formControlName="outros" mode="currency" currency="BRL" locale="pt-BR" [min]="0"></p-inputNumber>
                         </div>
                     </div>
 

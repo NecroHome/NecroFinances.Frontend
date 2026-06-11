@@ -20,6 +20,14 @@ export class DashboardModel {
     totalRestante: number;
     diferencaRestante: number;
 
+    totalINSS: number;
+    diferencaINSS: number;
+    totalIRPF: number;
+    diferencaIRPF: number;
+
+    totalOutros: number;
+    diferencaOutros: number;
+
     propriedades: PropriedadeModel[];
     investimentos: InvestimentoModel[];
     financiamentos: FinanciamentoModel[];

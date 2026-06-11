@@ -17,6 +17,7 @@ import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { DashboardModel } from "../../../models/main.data.model";
 import { DashboardService } from "../../../services/dashboard.service";
 import { DateUtils } from "../../../helpers/data.utils";
+import { LoginService } from "../../../services/login.service";
 
 @Component({
     selector: 'app-main-view-component',
@@ -28,7 +29,7 @@ import { DateUtils } from "../../../helpers/data.utils";
     ],
     providers: [
         SettingsService, MesService, GastoService, PatrimonioService, DashboardService,
-        MessageService
+        MessageService, LoginService
     ]
 })
 export class AppMainViewComponent {
@@ -48,7 +49,8 @@ export class AppMainViewComponent {
         private patrimonioService: PatrimonioService,
         private messageService: MessageService,
         private dashboardService: DashboardService,
-        private router: Router
+        private router: Router,
+        private loginService: LoginService
     ) {
 
     }

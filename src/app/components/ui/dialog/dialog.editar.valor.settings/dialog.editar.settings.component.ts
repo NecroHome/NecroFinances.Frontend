@@ -43,9 +43,11 @@ export class DialogEditarSettingsComponent implements OnInit, AfterViewChecked {
             valorHora: [0, [Validators.required, Validators.min(0)]],
             salarioMinimo: [0, [Validators.required, Validators.min(0)]],
             percentagemTaxaINSS: [0, [Validators.required, Validators.min(0)]],
+            percentagemTaxaIRPF: [0, [Validators.required, Validators.min(0)]],
             percentagemTaxaCooperativa: [0, [Validators.required, Validators.min(0)]],
             valorPlanoDental: [0, [Validators.required, Validators.min(0)]],
             valorPlanoSaude: [0, [Validators.required, Validators.min(0)]],
+            outros: [0, [Validators.required, Validators.min(0)]],
             desafioGastos: [0, [Validators.required, Validators.min(0)]]
         });
 
@@ -90,9 +92,11 @@ export class DialogEditarSettingsComponent implements OnInit, AfterViewChecked {
             valorHora: settings.valorHora,
             salarioMinimo: settings.salarioMinimo,
             percentagemTaxaINSS: settings.percentagemTaxaINSS,
+            percentagemTaxaIRPF: settings.percentagemTaxaIRPF,
             percentagemTaxaCooperativa: settings.percentagemTaxaCooperativa,
             valorPlanoDental: settings.valorPlanoDental,
             valorPlanoSaude: settings.valorPlanoSaude,
+            outros: settings.outros,
             desafioGastos: settings.desafioGastos
         });
 
