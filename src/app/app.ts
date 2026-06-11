@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { LoaderComponent } from './components/interceptos/loader.component';
 import { RouterOutlet } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +9,8 @@ import { RouterOutlet } from '@angular/router';
     styleUrl: './app.scss',
     imports: [
         LoaderComponent,
-        RouterOutlet
+        RouterOutlet,
+        ToastModule
     ]
 })
 export class App {
