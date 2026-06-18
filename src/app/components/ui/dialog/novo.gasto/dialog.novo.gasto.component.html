@@ -28,6 +28,23 @@
                 </div>
             </div>
 
+            <div class="field-card">
+                <i class="pi pi-wallet"></i>
+                <div class="field-info">
+                    <label for="recurso">Recurso</label>
+                    <div class="tipo-container">
+                        <p-button label="Debto" styleClass="tipo-btn" severity="info"
+                            [ngClass]="{ 'tipo-selected': formGasto.value.tipoRecurso === IndicadorTipoRecurso.DINHEIRO }"
+                            (onClick)="selecionarTipoRecurso(IndicadorTipoRecurso.DINHEIRO)">
+                        </p-button>
+                        <p-button label="Crédito" styleClass="tipo-btn" severity="info"
+                            [ngClass]="{ 'tipo-selected': formGasto.value.tipoRecurso === IndicadorTipoRecurso.CARTAO }"
+                            (onClick)="selecionarTipoRecurso(IndicadorTipoRecurso.CARTAO)">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+
             <div class="field-card icon-card">
                 <i class="pi pi-th-large"></i>
                 <div class="field-info">

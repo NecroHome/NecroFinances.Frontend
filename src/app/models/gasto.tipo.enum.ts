@@ -3,3 +3,8 @@ export enum IndicadorTipoGastoEnum {
     PARCELADO = 1,
     AVULSO = 2
 }
+
+export enum IndicadorTipoRecursoEnum {
+    DINHEIRO,
+    CARTAO
+}

@@ -1,4 +1,4 @@
-import { IndicadorTipoGastoEnum } from "./gasto.tipo.enum";
+import { IndicadorTipoGastoEnum, IndicadorTipoRecursoEnum } from "./gasto.tipo.enum";
 
 export class GastosModel {
     id: number;
@@ -10,4 +10,5 @@ export class GastosModel {
     parcela: number;
     totalParcelas: number;
     pago: Boolean;
+    tipoRecurso: IndicadorTipoRecursoEnum
 }

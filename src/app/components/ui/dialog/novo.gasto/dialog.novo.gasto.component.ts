@@ -5,7 +5,7 @@ import { ButtonModule } from "primeng/button";
 import { DatePickerModule } from "primeng/datepicker";
 import { DialogModule } from "primeng/dialog";
 import { InputNumberModule } from "primeng/inputnumber";
-import { IndicadorTipoGastoEnum } from "../../../../models/gasto.tipo.enum";
+import { IndicadorTipoGastoEnum, IndicadorTipoRecursoEnum } from "../../../../models/gasto.tipo.enum";
 import { GastosModel } from "../../../../models/gasto.model";
 import { IconesDescricao, IconesEnum } from "../../../../models/icones.enum";
 
@@ -30,6 +30,7 @@ export class DialogNovoGastoComponent implements OnInit {
     modoEditar: boolean = false;
 
     IndicadorTipoGasto = IndicadorTipoGastoEnum;
+    IndicadorTipoRecurso = IndicadorTipoRecursoEnum;
     IconesDescricao = IconesDescricao;
     icones = Object.values(IconesEnum);
     Object = Object;
@@ -54,7 +55,8 @@ export class DialogNovoGastoComponent implements OnInit {
             tipoGasto: [IndicadorTipoGastoEnum.AVULSO, Validators.required],
             totalParcelas: [0],
             parcela: [0],
-            descricao: ['']
+            descricao: [''],
+            tipoRecurso: [IndicadorTipoRecursoEnum.CARTAO, Validators.required]
         });
     }
 
@@ -67,7 +69,8 @@ export class DialogNovoGastoComponent implements OnInit {
             icone: IconesEnum.OTHER,
             parcela: 0,
             totalParcelas: 0,
-            tipoGasto: this.IndicadorTipoGasto.AVULSO
+            tipoGasto: this.IndicadorTipoGasto.AVULSO,
+            tipoRecurso: this.IndicadorTipoRecurso.CARTAO
         });
 
         this.modoEditar = false;
@@ -94,6 +97,10 @@ export class DialogNovoGastoComponent implements OnInit {
         if (tipo !== IndicadorTipoGastoEnum.PARCELADO) {
             this.formGasto.patchValue({ parcela: 0 });
         }
+    }
+
+    selecionarTipoRecurso(recurso: IndicadorTipoRecursoEnum): void {
+        this.formGasto.patchValue({ tipoRecurso: recurso });
     }
 
     selecionarValor(): void {
