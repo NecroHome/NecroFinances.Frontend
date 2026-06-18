@@ -126,19 +126,11 @@ body {
     transition: 0.2s ease;
 }
 
-.total-box:hover {
-    transform: scale(1.04);
-}
-
 .total-box .icon {
     font-size: 1.25rem;
     color: inherit !important;
     opacity: 0.9;
     transition: 0.25s ease;
-}
-
-.total-box:hover .icon {
-    transform: scale(1.18);
 }
 
 .total-box .info {
@@ -209,30 +201,6 @@ body {
 
 .green {
     color: #00ff00;
-}
-
-.card-jornada {
-    border-left: 3px solid #00e6e6;
-}
-
-.card-descontos,
-.card-fies,
-.card-meta {
-    border-left: 3px solid #ffe066;
-}
-
-.card-financeiro,
-.card-lime,
-.card-moto {
-    border-left: 3px solid #00ff00;
-}
-
-.card-patrimonio {
-    border-left: 3px solid #00e6ff;
-}
-
-.card-tomato {
-    border-left: 3px solid tomato;
 }
 
 .texto-diferenca-barra {

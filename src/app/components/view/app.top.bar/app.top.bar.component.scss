@@ -68,7 +68,6 @@
     padding: 5px;
     text-align: center;
     border-radius: 5px;
-    border-left: 5px solid lightskyblue;
     border-right: 5px solid lightskyblue;
     background: #1e1e1e;
     min-width: 150px;
@@ -85,7 +84,6 @@
     font-size: 0.85rem;
     align-items: center;
     background-color: #1e1e1e;
-    border-left: 5px solid orange;
     border-radius: 5px;
     margin-left: 5px;
     text-align: center;
@@ -132,7 +130,6 @@
 :host ::ng-deep .p-drawer {
     background: rgba(0, 0, 0, 0.58) !important;
     backdrop-filter: blur(22px) saturate(160%) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 :host ::ng-deep .p-drawer-header {
@@ -167,18 +164,6 @@
     backdrop-filter: blur(16px) saturate(140%);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
-}
-
-.panel-jornada {
-    border-left: 3px solid #00e6e6;
-}
-
-.panel-descontos {
-    border-left: 3px solid #ffe066;
-}
-
-.panel-financeiro {
-    border-left: 3px solid #00ff88;
 }
 
 .panel-header {
@@ -220,7 +205,6 @@
     border-radius: 6px;
     background: rgba(0, 0, 0, 0.35);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 3px solid transparent;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     transition: 0.2s ease;
 
@@ -286,7 +270,6 @@
 .drawer-restante {
     min-height: 48px;
     border-color: currentColor;
-    border-left-color: currentColor;
     box-shadow:
         0 0 16px rgba(0, 255, 136, 0.38),
         inset 0 0 16px rgba(255, 255, 255, 0.04);
