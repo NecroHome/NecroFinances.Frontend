@@ -2,7 +2,7 @@
 <div class="dashboard">
     <div class="top">
         <div class="top-side">
-            <div class="card card-metric card-bruto">
+            <div class="card card-metric">
                 <div class="labels-card-superior">Receitas</div>
                 <div class="card-content v-between gap-1">
                     <div class="barra-container-bottom">
@@ -13,7 +13,8 @@
                             <div class="texto-diferenca-barra" [ngClass]="getBordaDiferencaDivida(data.diferencaBruto)">
                                 <i [ngClass]="getIconValor(data.diferencaBruto)"></i>{{
                                 data.diferencaBruto |
-                                currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</div>
+                                currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                            </div>
                         </div>
                     </div>
                     <div class="barra-container-bottom">
@@ -42,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="card card-metric card-gastos">
+            <div class="card card-metric">
                 <div class="labels-card-superior">Gastos</div>
                 <div class="card-content v-between gap-1">
                     <div class="barra-container-bottom">
@@ -53,7 +54,8 @@
                             <div class="texto-diferenca-barra" [ngClass]="getBordaDiferenca(data.diferencaGastosFixos)">
                                 <i [ngClass]="getIconValor(data.diferencaGastosFixos)"></i>{{
                                 data.diferencaGastosFixos |
-                                currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</div>
+                                currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                            </div>
                         </div>
                     </div>
                     <div class="barra-container-bottom">
@@ -99,7 +101,8 @@
                                 <i
                                     [ngClass]="getIconValor(data.diferencaGastosAvulsos + data.diferencaGastosParcelados)"></i>{{
                                 data.diferencaGastosAvulsos + data.diferencaGastosParcelados |
-                                currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</div>
+                                currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                            </div>
                         </div>
                     </div>
 
@@ -108,9 +111,8 @@
                         <div class="col texto-valor-barra mt-2" style="color: red">{{ data.valorMeta |
                             currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</div>
                         <div class="col mt-2" [ngClass]="getClassValorDivida(data.diferencaMeta)">
-                            <div class="texto-diferenca-barra"
-                                [ngClass]="getBordaDiferencaDivida(data.diferencaMeta)"><i
-                                    [ngClass]="getIconValor(data.diferencaMeta)"></i>{{
+                            <div class="texto-diferenca-barra" [ngClass]="getBordaDiferencaDivida(data.diferencaMeta)">
+                                <i [ngClass]="getIconValor(data.diferencaMeta)"></i>{{
                                 data.diferencaMeta |
                                 currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</div>
                         </div>
@@ -135,7 +137,7 @@
     </div>
 
     <div class="middle">
-        <div class="card card-column">
+        <div class="double-card">
             <div class="card card-column">
                 <div class="labels-card-superior">Gastos Fixos - Cartão</div>
                 <div class="card-content v-between-2">
@@ -163,7 +165,7 @@
             </div>
 
             <div class="card card-column">
-                <div class="labels-card-superior">Gastos Fixos - Débito</div>
+                <div class="labels-card-superior">Gastos Fixos - Débto</div>
                 <div class="card-content v-between-2">
                     @for(item of data.listaGastosFixosDebto; track item.id) {
                     <div class="barra-container" (click)="abrirOrigem(item)">
@@ -188,7 +190,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card card-column">
             <div class="labels-card-superior">Gastos Parcelados</div>
             <div class="card-content v-between-2">
@@ -312,7 +313,8 @@
                         <div class="texto-diferenca-barra" [ngClass]="getBordaDiferencaDivida(data.diferencaEconomias)">
                             <i [ngClass]="getIconValor(data.diferencaEconomias)"></i>{{
                             data.diferencaEconomias |
-                            currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</div>
+                            currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                        </div>
                     </div>
                 </div>
                 <div class="barra-container-bottom">
@@ -320,7 +322,8 @@
                     <div class="col texto-valor-barra mt-2" style="color: Lime">{{ data.totalPatrimonio |
                         currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</div>
                     <div class="col mt-2" [ngClass]="getClassValor(data.diferencaPatrimonio)">
-                        <div class="texto-diferenca-barra" [ngClass]="getBordaDiferencaDivida(data.diferencaPatrimonio)"><i
+                        <div class="texto-diferenca-barra"
+                            [ngClass]="getBordaDiferencaDivida(data.diferencaPatrimonio)"><i
                                 [ngClass]="getIconValor(data.diferencaPatrimonio)"></i>{{
                             data.diferencaPatrimonio |
                             currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</div>
