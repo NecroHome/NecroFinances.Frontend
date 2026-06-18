@@ -45,10 +45,13 @@ export class DashboardModel {
     totalGastosAvulsos: number;
     diferencaGastosAvulsos: number;
 
+    totalGastosFixosCartao: number;
+
     valorMeta: number;
     diferencaMeta: number;
 
-    listaGastosFixos: GastoConsolidadoModel[];
+    listaGastosFixosCartao: GastoConsolidadoModel[];
+    listaGastosFixosDebto: GastoConsolidadoModel[];
     listaGastosParcelados: GastoConsolidadoModel[];
     listaGastosAvulsos: GastoConsolidadoModel[];
 }

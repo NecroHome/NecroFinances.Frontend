@@ -152,8 +152,6 @@ export class AppTopBarComponent implements OnInit, OnChanges {
             });
         });
 
-
-
         this.gastoDiaAtual = gastoHoje;
         const diferenca: number = this.gastoDiaAtual - gastoOntem;
         this.diferencaGasto = diferenca;
