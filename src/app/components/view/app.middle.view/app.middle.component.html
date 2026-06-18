@@ -135,8 +135,8 @@
     </div>
 
     <div class="middle">
-        <div class="card-column">
-            <div class="card card-large">
+        <div class="card card-column">
+            <div class="card card-column">
                 <div class="labels-card-superior">Gastos Fixos - Cartão</div>
                 <div class="card-content v-between-2">
                     @for(item of data.listaGastosFixosCartao; track item.id) {
@@ -162,7 +162,7 @@
                 </div>
             </div>
 
-            <div class="card card-large">
+            <div class="card card-column">
                 <div class="labels-card-superior">Gastos Fixos - Débito</div>
                 <div class="card-content v-between-2">
                     @for(item of data.listaGastosFixosDebto; track item.id) {
@@ -189,7 +189,7 @@
             </div>
         </div>
 
-        <div class="card card-large">
+        <div class="card card-column">
             <div class="labels-card-superior">Gastos Parcelados</div>
             <div class="card-content v-between-2">
                 @for(item of data.listaGastosParcelados; track item.id) {
